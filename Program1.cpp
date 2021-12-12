@@ -6,11 +6,10 @@ using namespace std;
 
 int main()
 {
-    int i, j, n = 1000
-
-              vector<vector<int>>
-                  vect(n, vector<int>(n));
-    int x = 500 double start, end, clk;
+    int i, j, n = 1000;
+    vector<vector<int>> vect(n, vector<int>(n));
+    int x = 500;
+    double start, end, clk;
 
     for (i = 0; i < n; i++)
     {
@@ -32,7 +31,7 @@ int main()
     {
         for (j = 0; j < n; j++)
         {
-            a[i][j] = a[i][j] * a[i];
+            vect[i][j] = vect[i][j] * a[i];
         }
     }
 

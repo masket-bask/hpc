@@ -11,8 +11,10 @@ int main()
 
     cout << "Enter the number of sections";
     cin >> sec;
+    cout << "\n";
     cout << "Enter the number of items";
     cin >> items;
+    cout << "\n";
 
     allitems = (int *)malloc(sec * items * sizeof(int));
     for (i = 0; i < sec; i++)
@@ -25,19 +27,19 @@ int main()
 
     start = clock();
 
-#pragma omp parallel for
-    for (i = 0; i < sec * items; i++)
-    {
+	#pragma omp parallel for
+	for (i = 0; i < sec * items; i++)
+	{
+		#pragma omp critical
+		{
+        	total += allitems[i];
+		}
+	}
 
-#pragma omp critical {
-        total += allitems[i];
-    }
-}
+	end = clock();
 
-end = clock();
+	clk = (double)(end - start) / CLOCKS_PER_SEC;
 
-clk = (double)(end - start) / CLOCKS_PER_SEC;
-
-cout << "Grand Total " << total << "\n";
-cout << " Time \t" << clk * 1000 << "\n";
+	cout << "Grand Total " << total << "\n";
+	cout << " Time \t" << clk * 1000 << "\n";
 }

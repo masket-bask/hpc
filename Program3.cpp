@@ -3,7 +3,7 @@
 #include <time.h>
 using namespace std;
 
-#define NUM_THREADS = 4;
+#define NUM_THREADS 4
 int num_step = 1000;
 double step;
 
@@ -15,7 +15,7 @@ int main()
 
     omp_set_num_threads(4);
 
-#pragma omp parallel for
+    #pragma omp parallel for
     {
         int i, id, nt;
         double x;
